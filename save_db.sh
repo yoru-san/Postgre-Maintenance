@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ./conf.sh
+source $HOME/Postgre-Maintenance/conf.sh
 
 
 date=`date +"%Y_%m_%d"`
@@ -16,10 +16,18 @@ fi
 echo "postgre user : $USERNAME"
 
 
-DBNAMES="`psql -U $USERNAME $DBHOST -l -A -F: | sed -ne "/:/ { /Name:Owner/d; /template1/d; /template0/d; s/:.*$//; p }"`"
+if [ ! "$DBNAMES" ] || [ "$DBNAMES" = "" ];then
+
+
+	#Get all DB for given user
+
+	DBNAMES="`psql -U $USERNAME $DBHOST -l -A -F: | sed -ne "/:/ { /Name:Owner/d; /template1/d; /template0/d; s/:.*$//; p }"`"
+fi
+
+
 for db in $DBNAMES 
 do
-	filename="$DIR/$date.dump"
+	filename="$DIR/$db/$date.dump"
 
 	echo "Creating backup for $db ..."
 	if ! mkdir -p $DIR/$db; then

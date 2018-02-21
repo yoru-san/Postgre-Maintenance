@@ -1,15 +1,20 @@
 #!/bin/bash
 
-source ./conf.sh
+source $HOME/Postgre-Maintenance/conf.sh
 
 
 if [ $# = 1 ]; then
-	echo "Restoring last dump for $1..."
-	if ! last_dump="$HOME/db/save/$1/$(ls -Art $HOME/db/save | tail -n 1)"; then
+	DB=$1
+
+	echo "Restoring last dump for $DB..."
+
+	#Get the most recent file for the database dump
+
+	if ! last_dump="$HOME/db/save/$DB/$(ls -Art $HOME/db/save/$DB | tail -n 1)"; then
 		echo "Failed to load last dump, check your files in $HOME/db/save/"
 	else
 		echo "Dump file used :$last_dump"
-		if ! pg_restore -c -d $1 -v $last_dump; then
+		if ! PGPASSWORD=$PASSWORD pg_restore -U $USERNAME -h $HOST -c -d $DB -v $last_dump; then
 		
 			echo "Failed to restore database from $last_dump"
 			echo "Check error messages for further informations"
@@ -20,10 +25,15 @@ if [ $# = 1 ]; then
 		
 
 elif [ $# = 2 ]; then
-	echo "Restoring $1 from $2"
-	if ! pg_restore -d $1 -v $2; then
+	DB=$1
+	ARCHIVE=$2
+
+	echo "Restoring $DB from $ARCHIVE"
+	if ! PGPASSWORD=$PASSWORD pg_restore -U $USERNAME -h $HOST -c -d $DB -v $ARCHIVE; then
 		echo "Failed to restore db $1 from $2, check error messages for further informations"
 	else
 		echo "Manual restoration finished sucessfully"
 	fi
+else
+	echo "ERROR : invalid argument (restore_db.sh 'db_name' {'archive_path'})"
 fi

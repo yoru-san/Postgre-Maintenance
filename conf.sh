@@ -12,7 +12,7 @@ PORT=5432
 
 #Leave blank for all dbs
 #Example : "appli_web postgres"
-DBNAMES=""
+DBNAMES="appli_web"
 
 #Directory where databases are dumped
 DIR="$HOME/db/save"

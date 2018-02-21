@@ -1,6 +1,8 @@
 #!/bin/bash 
  
-source ./conf.sh
+ACTUALDIR=$(cd `dirname $0` && pwd)
+
+source $ACTUALDIR/conf.sh
 
 database=$1 
 finaldate="$2 days ago"

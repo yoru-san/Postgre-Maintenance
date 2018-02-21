@@ -1,7 +1,8 @@
 #!/bin/bash
 
-source $HOME/Postgre-Maintenance/conf.sh
+ACTUALDIR=$(cd `dirname $0` && pwd)
 
+source $ACTUALDIR/conf.sh
 
 date=`date +"%Y_%m_%d"`
 
@@ -28,10 +29,11 @@ fi
 for db in $DBNAMES 
 do
 	filename="$DIR/$db/$date.dump"
-
+																			
+echo "$DIR"
 	echo "Creating backup for $db ..."
 	if ! mkdir -p $DIR/$db; then
-		echo "ERROR : Failed to create file $dir/$db, check your prilileges"
+		echo "ERROR : Failed to create file $DIR/$db, check your privileges"
 	fi
 	if ! PGPASSWORD=$PASSWORD pg_dump -U $USERNAME -h $HOST -Fc $db > $filename; then
 		echo "ERROR : Failed to dump database $db"

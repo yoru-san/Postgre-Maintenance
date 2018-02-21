@@ -1,7 +1,8 @@
 #!/bin/bash
 
-source $HOME/Postgre-Maintenance/conf.sh
+ACTUALDIR=$(cd `dirname $0` && pwd)
 
+source $ACTUALDIR/conf.sh
 
 if [ $# = 1 ]; then
 	DB=$1

@@ -9,7 +9,7 @@ if [ $# = 1 ]; then
 		echo "Failed to load last dump, check your files in $HOME/db/save/"
 	else
 		echo "Dump file used :$last_dump"
-		if ! pg_restore -d $1 -v $last_dump; then
+		if ! pg_restore -c -d $1 -v $last_dump; then
 		
 			echo "Failed to restore database from $last_dump"
 			echo "Check error messages for further informations"

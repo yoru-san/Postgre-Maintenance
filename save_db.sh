@@ -6,6 +6,7 @@ source $ACTUALDIR/conf.sh
 
 date=`date +"%Y_%m_%d"`
 
+#Check if host is local or distant
 if [ "$HOST" = "localhost" ]; then
 	DBHOST="$USERNAME"
 	echo "---Backup for local server---"
@@ -16,7 +17,7 @@ fi
 
 echo "postgre user : $USERNAME"
 
-
+#If no database given in conf.sh, saving all database
 if [ ! "$DBNAMES" ] || [ "$DBNAMES" = "" ];then
 
 

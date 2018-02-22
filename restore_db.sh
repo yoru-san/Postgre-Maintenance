@@ -16,7 +16,7 @@ if [ $# = 1 ]; then
 		echo "Failed to load last dump, check your files in $HOME/db/save/"
 	else
 		echo "Dump file used :$last_dump"
-		if ! PGPASSWORD=$PASSWORD pg_restore -U $USERNAME -h $HOST -c -d $DB $last_dump; then
+		if ! PGPASSWORD=$PASSWORD pg_restore -v -U $USERNAME -h $HOST -c -d $DB $last_dump; then
 		
 			echo "Failed to restore database from $last_dump"
 			echo "Check error messages for further informations"
@@ -31,7 +31,7 @@ elif [ $# = 2 ]; then
 	ARCHIVE=$2
 
 	echo "Restoring $DB from $ARCHIVE"
-	if ! PGPASSWORD=$PASSWORD pg_restore -U $USERNAME -h $HOST -c -d $DB -v $ARCHIVE; then
+	if ! PGPASSWORD=$PASSWORD pg_restore -v -U $USERNAME -h $HOST -c -d $DB $ARCHIVE; then
 		echo "Failed to restore db $1 from $2, check error messages for further informations"
 	else
 		echo "Manual restoration finished sucessfully"

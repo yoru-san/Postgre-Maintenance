@@ -5,7 +5,7 @@ USERNAME="appli_web"
 PASSWORD="postgre"
 
 #Host where the db is located
-HOST="localhost"
+HOST="127.0.0.1"
 
 #Port to access the db
 PORT=5432

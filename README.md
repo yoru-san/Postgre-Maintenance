@@ -1,4 +1,4 @@
-# Postgre-Maintenance
+﻿# Postgre-Maintenance
 
 Vous trouverez dans ce README les consignes pour comprendre le fonctionnement de notre script. Après avoir lu, vous serez en mesure d'utiliser notre application sans problème.
 
@@ -16,10 +16,10 @@ Avec notre application, on peut donc :
 - Restaurer une base automatiquement avec la dernière sauvegarde ou selon une sauvegarde précise
 - Supprimer des archives après une certaine durée
 
-! Les scripts ne sont pas installés en tant que commandes et nécessitent donc d'être exécutés en renseignant leur chemin d'accès !
+! Les scripts ne sont pas installés en tant que commandes et nécessitent donc d'être exécutés en renseignant leur chemin d'accès !  
 Pour pouvoir les utiliser comme des commandes, il est possible de créer un alias.
 
-###### Fichier de configuration
+###### Fichier de configuration  
 Script correspondant : *conf.sh*
 Fichier renseignant des variables utilisées par les scripts lors de leur exécution
 

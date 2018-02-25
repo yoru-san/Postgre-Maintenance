@@ -1,8 +1,13 @@
 ﻿# Postgre-Maintenance
 
-Vous trouverez dans ce README les consignes pour comprendre le fonctionnement de notre script. Après avoir lu, vous serez en mesure d'utiliser notre application sans problème.
+Vous trouverez dans ce README les consignes pour comprendre le fonctionnement de notre script.  
+Après avoir lu, vous serez en mesure d'utiliser notre application sans problème.  
 
 ## Prérequis :
+Avoir suivi les étapes d'installation de la documentation  
+
+OU  
+
 - Une machine Debian à jour
 - Un accès au compte root
 - Des bases de données PostgreSQL
@@ -56,7 +61,6 @@ Chaque base est sauvegardée dans un dossier spécifique portant son nom.
 Chaque sauvegarde est enregistrée dans le dossier sous le format *YYYY_MM_DD.dump*  
 
 
-
 ### La fonctionnalité de restauration  
 Script correspondant : *restore_db.sh*  
 Arguments: **nom_de_la_base**, {*chemin vers l'archive* (optionnel)}  
@@ -64,6 +68,8 @@ Arguments: **nom_de_la_base**, {*chemin vers l'archive* (optionnel)}
 Fonctionnement :  
 - 1 seul argument : restaure la base correspondant au nom avec la sauvegarde la plus récente  
 - 2 arguments : restaure la base correspondant au nom avec l'archive.dump donnée en argument  
+
+**Ex: ./restore_db.sh appli_web ./db/save/appli_web/2018_02_20.dump**
 
 
 ### La fonctionnalité de suppression  
@@ -73,6 +79,8 @@ Arguments: **nom_de_la_base**, **nombre_de_jours**
 
 Fonctionnement :  
 Supprime les archives d'une base spécifique datés d'un certain nombre de jours choisis par l'utilisateur  
+
+**Ex: /delete_db.sh appli_web 2**
 
 
 ### Planification

@@ -44,50 +44,50 @@ Séparer le nom des bases par un espace
 **Ex: "$HOME/db/save"**
 
 ### La fonctionnalité de sauvegarde
-Script correspondant : *save_db.sh*
-Arguments : aucun
-Options spécifiques dans le fichier de configuration *conf.sh* :
-- DBNAMES
-- DIR
+Script correspondant : *save_db.sh*  
+Arguments : aucun  
+Options spécifiques dans le fichier de configuration *conf.sh* :  
+- DBNAMES  
+- DIR  
 
-Fonctionnement :
-Sauvegarde toutes les bases renseignées dans le fichier de configuration.
-Chaque base est sauvegardée dans un dossier spécifique portant son nom.
-Chaque sauvegarde est enregistrée dans le dossier sous le format *YYYY_MM_DD.dump*
-
-
-
-### La fonctionnalité de restauration
-Script correspondant : *restore_db.sh*
-Arguments: **nom_de_la_base**, {*chemin vers l'archive* (optionnel)}
-
-Fonctionnement :
-- 1 seul argument : restaure la base correspondant au nom avec la sauvegarde la plus récente
-- 2 arguments : restaure la base correspondant au nom avec l'archive.dump donnée en argument
+Fonctionnement :  
+Sauvegarde toutes les bases renseignées dans le fichier de configuration.  
+Chaque base est sauvegardée dans un dossier spécifique portant son nom.  
+Chaque sauvegarde est enregistrée dans le dossier sous le format *YYYY_MM_DD.dump*  
 
 
-### La fonctionnalité de suppression
-Script correspondant : *delete_db.sh*
 
-Arguments: nom de la base, nombre de jours
+### La fonctionnalité de restauration  
+Script correspondant : *restore_db.sh*  
+Arguments: **nom_de_la_base**, {*chemin vers l'archive* (optionnel)}  
 
-Fonctionnement :
-Supprime les archives d'une base spécifique datés d'un certain nombre de jours choisis par l'utilisateur
+Fonctionnement :  
+- 1 seul argument : restaure la base correspondant au nom avec la sauvegarde la plus récente  
+- 2 arguments : restaure la base correspondant au nom avec l'archive.dump donnée en argument  
 
 
-###### Planification
+### La fonctionnalité de suppression  
+Script correspondant : *delete_db.sh*  
+  
+Arguments: **nom_de_la_base**, **nombre_de_jours**  
 
-Pour automatiser la sauvegarde et la suppression, il est possible de mettre en place un cron pour l'utilisateur.
-Pour cela, on ouvre le fichier où les cron sont stockés avec la commande *crontab -e*.
-Il suffit d'ajouter une entrée pour planifier l'exécution du script que l'on souhaite.
-Syntaxe : MM HH JOUR MOIS JOUR_DE_LA_SEMAINE {chemin vers le script}
+Fonctionnement :  
+Supprime les archives d'une base spécifique datés d'un certain nombre de jours choisis par l'utilisateur  
 
-Exemple :
 
-**0 2 * * * /home/appli_web/Postgre-Maintenance/save_db.sh**
-*Sauvegarde les bases tous les jours à 2h du matin*
+### Planification
 
-**0 10 * * * /home/appli_web/Postgre-Maintenance/delete_db.sh 7**
-*Supprime les archives datant de 7 jours ou plus tous les jours à 10h du matin*
+Pour automatiser la sauvegarde et la suppression, il est possible de mettre en place un cron pour l'utilisateur.  
+Pour cela, on ouvre le fichier où les cron sont stockés avec la commande *crontab -e*.  
+Il suffit d'ajouter une entrée pour planifier l'exécution du script que l'on souhaite.  
+Syntaxe : MM HH JOUR MOIS JOUR_DE_LA_SEMAINE {chemin vers le script}  
+
+Exemple :  
+
+**0 2 * * * /home/appli_web/Postgre-Maintenance/save_db.sh**  
+*Sauvegarde les bases tous les jours à 2h du matin*  
+
+**0 10 * * * /home/appli_web/Postgre-Maintenance/delete_db.sh 7**  
+*Supprime les archives datant de 7 jours ou plus tous les jours à 10h du matin*  
 
 

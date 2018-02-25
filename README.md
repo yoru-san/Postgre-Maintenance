@@ -16,10 +16,10 @@ Avec notre application, on peut donc :
 - Restaurer une base automatiquement avec la dernière sauvegarde ou selon une sauvegarde précise
 - Supprimer des archives après une certaine durée
 
-! Les scripts ne sont pas installés en tant que commandes et nécessitent donc d'être exécutés en renseignant leur chemin d'accès !  
+**Les scripts ne sont pas installés en tant que commandes et nécessitent donc d'être exécutés en renseignant leur chemin d'accès**  
 Pour pouvoir les utiliser comme des commandes, il est possible de créer un alias.
 
-###### Fichier de configuration  
+### Fichier de configuration  
 Script correspondant : *conf.sh*
 Fichier renseignant des variables utilisées par les scripts lors de leur exécution
 
@@ -43,7 +43,7 @@ Séparer le nom des bases par un espace
 - DIR : Dossier où seront stockés les sauvegardes des bases
 **Ex: "$HOME/db/save"**
 
-###### La fonctionnalité de sauvegarde
+### La fonctionnalité de sauvegarde
 Script correspondant : *save_db.sh*
 Arguments : aucun
 Options spécifiques dans le fichier de configuration *conf.sh* :
@@ -57,7 +57,7 @@ Chaque sauvegarde est enregistrée dans le dossier sous le format *YYYY_MM_DD.du
 
 
 
-###### La fonctionnalité de restauration
+### La fonctionnalité de restauration
 Script correspondant : *restore_db.sh*
 Arguments: **nom_de_la_base**, {*chemin vers l'archive* (optionnel)}
 
@@ -66,7 +66,7 @@ Fonctionnement :
 - 2 arguments : restaure la base correspondant au nom avec l'archive.dump donnée en argument
 
 
-###### La fonctionnalité de suppression
+### La fonctionnalité de suppression
 Script correspondant : *delete_db.sh*
 
 Arguments: nom de la base, nombre de jours
